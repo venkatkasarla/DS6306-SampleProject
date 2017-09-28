@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "MSDS6306 Unit 4  assignment \n\nThis is a sample project for class. It contains the following directories with files:\n\nData: rollingsales_brooklyn.csv \n\nPaper: rollingsales_brooklyn.Rmd\n\nSource: R_rollingsales_brooklyn.R",
+    "created" : 1506588474902.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2794784284",
+    "id" : "9E5E0A78",
+    "lastKnownWriteTime" : 1506588282,
+    "last_content_update" : 1506588282,
+    "path" : "~/Documents/git_DS6306/DS6306-SampleProject/README.md",
+    "project_path" : "README.md",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "markdown"
+}
