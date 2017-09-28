@@ -1,0 +1,21 @@
+---
+title: "rollingsales_brooklyn.rmd"
+author: "Venkat Kasarla"
+date: "9/28/2017"
+output: 
+  html_document:
+      keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Rolling Sales Brooklyn 
+
+Plot shows that price range for homes in brooklyn . It shows that hogh demand for home between 3000 sqft to 3500 sqft.
+
+
+```{r cars}
+plot(log10(bk.homes$gross.sqft),log10(bk.homes$sale.price.n))
+```

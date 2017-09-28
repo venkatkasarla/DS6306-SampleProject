@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\nrequire(gdata)\nrequire(plyr) \n#load the gdata and plyr packages in to R.\nlibrary(plyr)\nlibrary(gdata)\n\nsetwd(paste(getwd(),\"/Data/\",sep=\"\"))\n\n# So, save the file as a csv and use read.csv instead\nbk <- read.csv(\"rollingsales_brooklyn.csv\",skip=4,header=TRUE)\n\n## Check the data\nhead(bk)\nsummary(bk)\nstr(bk) \n\n## clean/format the data with regular expressions, sale.price.n is numeric, not a factor.\nbk$SALE.PRICE.N <- as.numeric(gsub(\"[^[:digit:]]\",\"\", bk$SALE.PRICE))\ncount(is.na(bk$SALE.PRICE.N))\n\nnames(bk) <- tolower(names(bk)) \n\n# Get rid of leading digits bk$gross.square.feet as above bk$SALE.PRICE\nbk$gross.sqft <- as.numeric(gsub(\"[^[:digit:]]\",\"\", bk$gross.square.feet))\n\n#  Get rid of leading digits of bk$land.sqft as above bk$SALE.PRICE\nbk$land.sqft <- as.numeric(gsub(\"[^[:digit:]]\",\"\", bk$land.square.feet))\n  \n  bk$year.built <- as.numeric(as.character(bk$year.built))\n\n##  bit of exploration to make sure there's not anything\n\nattach(bk)\nhist(sale.price.n) \ndetach(bk)\n\n## keep only the actual sales\nbk.sale <- bk[bk$sale.price.n!=0,]\nplot(bk.sale$gross.sqft,bk.sale$sale.price.n)\nplot(log10(bk.sale$gross.sqft),log10(bk.sale$sale.price.n))\n\n## for now, let's look at 1-, 2-, and 3-family homes\nbk.homes <- bk.sale[which(grepl(\"FAMILY\",bk.sale$building.class.category)),]\ndim(bk.homes)\n\n\n#  complete plot() with log10 of bk.homes$gross.sqft,bk.homes$sale.price.n\n\nplot(log10(bk.homes$gross.sqft),log10(bk.homes$sale.price.n))\nsummary(bk.homes[which(bk.homes$sale.price.n<100000),])\n\n\n## remove outliers that seem like they weren't actual sales\nbk.homes$outliers <- (log10(bk.homes$sale.price.n) <=5) + 0\n\n# find out homes that meets bk.homes$outliers==0\nbk.homes <- bk.homes[which(bk.homes$outliers==0),]\nplot(log10(bk.homes$gross.sqft),log10(bk.homes$sale.price.n))\n",
+    "created" : 1506583917293.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1225684676",
+    "id" : "8FD01A61",
+    "lastKnownWriteTime" : 1506584904,
+    "last_content_update" : 1506584904167,
+    "path" : "~/Documents/git_DS6306/DS6306-SampleProject/Source/R_rollingsales_brooklyn.R",
+    "project_path" : "Source/R_rollingsales_brooklyn.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

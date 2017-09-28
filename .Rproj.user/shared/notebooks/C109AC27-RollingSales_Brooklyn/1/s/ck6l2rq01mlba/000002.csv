@@ -1,0 +1,1 @@
+"0","plot(log10(bk.homes$gross.sqft),log10(bk.homes$sale.price.n))"
